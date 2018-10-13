@@ -1,11 +1,13 @@
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const seedDB = require('./seeds');
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const Campground = require('./models/campground');
 const app = express();
 
-const Campground = require('./models/campground');
-
 mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true });
+
+seedDB();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -16,7 +18,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/campgrounds', async (req, res) => {
-    const campgrounds = await Campground.find({});
+    const campgrounds = await Campground.find({})
+        .populate('comments').exec();
+        
     res.render('campgrounds', { campgrounds });
 });
 
@@ -34,7 +38,8 @@ app.post('/campgrounds', async (req, res) => {
 app.get('/campgrounds/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const campground = await Campground.findById(id);
+        const campground = await Campground.findById(id)
+            .populate('comments').exec();
         
         if (!campground) throw new Error('null campground');
         

@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+    
+    <div class="container">
+        <h4>
+            <a href="/campgrounds/<%= campground._id %>">
+                <%= campground.name %>
+            </a>
+        </h4>
+
+        <figure class="figure">
+            <img class="figure-img img-fluid rounded" src="<%= campground.image %>" />
+            
+            <% if (campground.description) { %>
+                <figcaption class="figure-caption text-center">
+                    <h4><%= campground.description %></h4>
+                </figcaption>
+            <% } %>
+        </figure>
+    </div>
+
+<%- include('partials/footer') %>

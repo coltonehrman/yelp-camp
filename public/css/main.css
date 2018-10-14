@@ -1,3 +1,7 @@
+nav.navbar {
+    z-index: 1;
+}
+
 .card-body .card-text .lead {
     font-size: 0.75rem;
 }

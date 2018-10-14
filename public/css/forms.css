@@ -1,0 +1,47 @@
+html, body {
+    background-color: #f5f5f5;
+    height: 100%;
+}
+
+main.container {
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    margin-top: 100px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+
+.form-signin input:first-of-type {
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+}
+
+.form-signin input:last-of-type {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}

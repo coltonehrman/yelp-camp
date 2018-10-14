@@ -1,0 +1,19 @@
+block vars
+doctype html
+html(lang="en")
+    head
+        include partials/header
+        
+    body
+        <!--[if lte IE 9]>
+            p(class="browserupgrade").
+                You are using an #[strong outdated] browser.
+                Please #[a(href="https://browsehappy.com/") upgrade your browser]
+                to improve your experience and security.
+        <![endif]-->
+        
+        include partials/navbar
+        
+        block body
+        
+        include partials/footer

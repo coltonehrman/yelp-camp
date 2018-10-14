@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
     res.render('landing');

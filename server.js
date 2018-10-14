@@ -21,7 +21,7 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login');
 }
 
-mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp', { useNewUrlParser: true });
 
 // seedDB();
 

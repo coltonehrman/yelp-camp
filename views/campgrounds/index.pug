@@ -23,4 +23,6 @@ block body
                         figcaption(class="figure-caption text-center")
                             h4
                                 a(href="/campgrounds/" + campground._id)= campground.name
+                            .
+                                Comments #[span(class="badge badge-pill badge-light")= campground.comments.length]
                                 

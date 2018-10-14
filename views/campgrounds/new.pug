@@ -1,0 +1,22 @@
+extends ../base
+
+block body
+    main(class="container")
+        h1(class="text-center mb-4") Create a New Campground
+        
+        form(class="w-50 m-auto" action="/campgrounds" method="POST")
+            div(class="form-group")
+                input(class="form-control" type="text" name="campground[name]" placeholder="Name" required)/
+            
+            div(class="form-group")
+                input(class="form-control" type="text" name="campground[image]" placeholder="Image URL" required)/
+            
+            div(class="form-group")
+                input(class="form-control" type="text" name="campground[headline]" placeholder="Headline")/
+            
+            div(class="form-group")
+                input(class="form-control" type="text" name="campground[description]" placeholder="Description")/
+        
+            button(class="btn btn-primary btn-block" type="submit") Add Campground
+            
+            a(class="btn btn-link" href="/campgrounds") Go Back

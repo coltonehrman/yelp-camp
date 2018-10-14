@@ -1,0 +1,16 @@
+extends ../base
+
+block body
+    main(class="container")
+        h1(class="text-center mb-4") Comment about #{campground.name}
+        
+        form(class="w-50 m-auto" method="POST" action="/campgrounds/" + campground._id + "/comments")
+            div(class="form-group")
+                input(class="form-control" type="text" name="comment[text]" placeholder="Text" required)/
+            
+            div(class="form-group")
+                input(class="form-control" type="text" name="comment[author]" placeholder="Author" required)/
+        
+            button(class="btn btn-primary btn-block" type="submit") Post Comment
+            
+            a(class="btn btn-link" href="/campgrounds/" + campground._id) Go Back

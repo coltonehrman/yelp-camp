@@ -22,6 +22,7 @@ Router.get('/new', storeBackURL, isLoggedIn, (req, res) => {
 });
 
 Router.post('/', isLoggedIn, async (req, res) => {
+    req.body.campground.author = req.user._id;
     await Campground.create(req.body.campground);
     res.redirect('/campgrounds');
 });
@@ -31,9 +32,10 @@ Router.get('/:id', storeBackURL, async (req, res) => {
         const { id } = req.params;
         try {
             const campground = await Campground.findById(id)
+                .populate('author')
                 .populate({
                     path: 'comments',
-                    populate: { path: 'author' } 
+                    populate: { path: 'author' }
                 }).exec();
             
             if (!campground) throw new Error('null campground');

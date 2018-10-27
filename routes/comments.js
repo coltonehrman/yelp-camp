@@ -27,10 +27,11 @@ Router.get('/new', storeBackURL, isLoggedIn, async (req, res) => {
 
 Router.post('/', isLoggedIn, async (req, res) => {
     const { campgroundID } = req.params;
+    req.body.comment.author = req.user._id;
     
     const [ campground, comment ] = await Promise.all([
         Campground.findById(campgroundID),
-        Comment.create({ text: req.body.comment.text, author: req.user._id })
+        Comment.create(req.body.comment)
     ]);
     
     console.log(comment);

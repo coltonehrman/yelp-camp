@@ -19,6 +19,8 @@ block body
                             img(class="figure-img img-fluid rounded" src=campground.image)/
                             
                             figcaption(class="figure-caption")
+                                span(class="badge badge-pill badge-info p-2 mb-2") Submitted By 
+                                    span(style="text-decoration: underline")=campground.author.username
                                 span(class="badge badge-pill badge-info float-right p-2 mb-2") #{campground.comments.length} Comments
                                 
                     div(class="col-lg-6 mb-3")

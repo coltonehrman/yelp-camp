@@ -29,11 +29,11 @@ async function seedDB() {
     const campgrounds = await Promise.all(data.map(async d => {
         const [ campground, comment1, comment2 ] = await Promise.all([
             Campground.create(d),
-            Comment.create({ text: 'Amazing place!', author: 'Hiker' }),
-            Comment.create({ text: 'Another comment...', author: 'Bear' })
+            // Comment.create({ text: 'Amazing place!', author: 'Hiker' }),
+            // Comment.create({ text: 'Another comment...', author: 'Bear' })
         ]);
         
-        campground.comments.push(comment1, comment2);
+        // campground.comments.push(comment1, comment2);
         return await campground.save();
     }));
     

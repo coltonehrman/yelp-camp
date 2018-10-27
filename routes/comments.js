@@ -30,8 +30,10 @@ Router.post('/', isLoggedIn, async (req, res) => {
     
     const [ campground, comment ] = await Promise.all([
         Campground.findById(campgroundID),
-        Comment.create(req.body.comment)
+        Comment.create({ text: req.body.comment.text, author: req.user._id })
     ]);
+    
+    console.log(comment);
     
     campground.comments.push(comment);
     await campground.save();

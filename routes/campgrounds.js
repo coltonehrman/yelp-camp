@@ -29,12 +29,20 @@ Router.post('/', isLoggedIn, async (req, res) => {
 Router.get('/:id', storeBackURL, async (req, res) => {
     try {
         const { id } = req.params;
-        const campground = await Campground.findById(id)
-            .populate('comments').exec();
+        try {
+            const campground = await Campground.findById(id)
+                .populate({
+                    path: 'comments',
+                    populate: { path: 'author' } 
+                }).exec();
+            
+            if (!campground) throw new Error('null campground');
         
-        if (!campground) throw new Error('null campground');
-        
-        res.render('campgrounds/show', { campground });
+            res.render('campgrounds/show', { campground });
+        } catch(err) {
+            console.log(err);
+            throw err;
+        }
     } catch(err) {
         res.redirect('/campgrounds');
     }

@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 app.use('/', IndexRouter);
 app.use('/', AuthRouter);
 app.use('/campgrounds', CampgroundsRouter);
-app.use('/campgrounds', CommentsRouter);
+app.use('/campgrounds/:campgroundID/comments', CommentsRouter);
 
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0', () => {
     console.log('Listening on port...');

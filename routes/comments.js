@@ -1,4 +1,4 @@
-const Router = require('express').Router();
+const Router = require('express').Router({ mergeParams: true });
 const Comment = require('../models/comment');
 const Campground = require('../models/campground');
 
@@ -12,7 +12,7 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login');
 }
 
-Router.get('/:campgroundID/comments/new', storeBackURL, isLoggedIn, async (req, res) => {
+Router.get('/new', storeBackURL, isLoggedIn, async (req, res) => {
     try {
         const { campgroundID } = req.params;
         const campground = await Campground.findById(campgroundID);
@@ -25,7 +25,7 @@ Router.get('/:campgroundID/comments/new', storeBackURL, isLoggedIn, async (req, 
     }
 });
 
-Router.post('/:campgroundID/comments', isLoggedIn, async (req, res) => {
+Router.post('/', isLoggedIn, async (req, res) => {
     const { campgroundID } = req.params;
     
     const [ campground, comment ] = await Promise.all([

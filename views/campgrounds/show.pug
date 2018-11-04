@@ -15,7 +15,7 @@ block body
             div(class="col-lg-9 col-md-8")
                 div(class="row")
                     div(class="col-lg-6")
-                        if (user && user._id.equals(campground.author._id))
+                        if (currentUser && currentUser._id.equals(campground.author._id))
                             a(class="btn btn-warning btn-sm mb-3" href="/campgrounds/" + campground._id + "/edit") Edit
                             
                             form(class="d-inline mx-2" method="POST" action="/campgrounds/" + campground._id + '?_method=DELETE')
@@ -42,7 +42,7 @@ block body
                                 if (campground.description)
                                     p(class="card-text")= campground.description
                 
-                if (user)
+                if (currentUser)
                     a(class="btn btn-primary mb-3" href="/campgrounds/" + campground._id + "/comments/new") Add Comment
                 
                 if (campground.comments.length !== 0)

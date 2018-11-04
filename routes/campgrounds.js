@@ -67,7 +67,7 @@ Router.get('/:id', storeBackURL, async (req, res) => {
             
             if (!campground) throw new Error('null campground');
         
-            res.render('campgrounds/show', { campground, user: req.user });
+            res.render('campgrounds/show', { campground });
         } catch(err) {
             console.log(err);
             throw err;

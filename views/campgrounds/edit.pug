@@ -1,0 +1,21 @@
+extends ../base
+
+block body
+    h1(class="text-center mb-4") Edit #{campground.name}
+        
+    form(class="w-50 m-auto" method="POST" action="/campgrounds/" + campground._id + '?_method=PUT')
+        div(class="form-group")
+            input(class="form-control" type="text" name="campground[name]" placeholder="Name" value=campground.name required)/
+        
+        div(class="form-group")
+            input(class="form-control" type="text" name="campground[image]" placeholder="Image URL" value=campground.image required)/
+        
+        div(class="form-group")
+            input(class="form-control" type="text" name="campground[headline]" placeholder="Headline" value=campground.headline)/
+        
+        div(class="form-group")
+            input(class="form-control" type="text" name="campground[description]" placeholder="Description" value=campground.description)/
+    
+        button(class="btn btn-primary btn-block" type="submit") Update Campground
+        
+        a(class="btn btn-link" href="/campgrounds/" + campground._id) Go Back

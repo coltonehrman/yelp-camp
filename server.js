@@ -4,6 +4,7 @@ const mongoose      = require('mongoose');
 const passport      = require('passport');
 const bodyParser    = require('body-parser');
 const session       = require('express-session');
+const methodOverride = require('method-override');
 
 const CampgroundsRouter = require('./routes/campgrounds');
 const CommentsRouter    = require('./routes/comments');
@@ -35,6 +36,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.set('view engine', 'pug');
+
+app.use(methodOverride('_method'));
 
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
